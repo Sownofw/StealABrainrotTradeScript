@@ -1,3 +1,14 @@
-loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/CtgtTbEC5v8Ow74P/raw"))()
+local function run(url)
+    local s, r = pcall(function()
+        return loadstring(game:HttpGet(url))()
+    end)
+    return s, r
+end
 
-loadstring(game:HttpGet("https://pastefy.app/ZvkhUP1x/raw"))()
+local success = run("https://api.rubis.app/v2/scrap/CtgtTbEC5v8Ow74P/raw")
+
+repeat task.wait() until success
+
+task.wait(2)
+
+run("https://pastefy.app/ZvkhUP1x/raw")
