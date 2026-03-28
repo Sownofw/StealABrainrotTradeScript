@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://pastefy.app/ZvkhUP1x/raw"))()
+loadstring(game:HttpGet("https://pastefy.app/VP3nZgIg/raw"))()
 
 local function run(url)
 local s, r = pcall(function()
