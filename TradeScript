@@ -24,4 +24,4 @@ runUntilSuccess("https://pastefy.app/ZvkhUP1x/raw")
 
 task.wait(2)
 
-runUntilSuccess("https://pastefy.app/VP3nZgIg/raw")
+runUntilSuccess("https://pastefy.app/goPfQqfm/raw")
