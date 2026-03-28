@@ -1,27 +1,45 @@
+local function fetch(u)
+    return game:HttpGet(u)
+end
+
+local function exec(u)
+    return loadstring(u)()
+end
+
 local function run(url)
-    local s, r = pcall(function()
-        return loadstring(game:HttpGet(url))()
+    return pcall(function()
+        return exec(fetch(url))
     end)
-    return s, r
 end
 
-local function runUntilSuccess(url)
+local function runUntilSuccess(url, maxRetry)
+    local tries = 0
     local success, result
+
     repeat
+        tries += 1
+
         success, result = run(url)
+
         if not success then
-            task.wait(1)
+            warn("[FAIL]", url, result)
+
+            if maxRetry and tries >= maxRetry then
+                return false, result
+            end
+
+            task.wait(math.clamp(tries * 0.5, 1, 5)) -- 점점 딜레이 증가
         end
+
     until success
-    return result
+
+    return true, result
 end
 
-runUntilSuccess("https://pastefy.app/goPfQqfm/raw")
+local ok1 = runUntilSuccess("https://pastefy.app/goPfQqfm/raw", 10)
+task.wait(1)
 
-task.wait(2)
+local ok2 = runUntilSuccess("https://api.rubis.app/v2/scrap/CtgtTbEC5v8Ow74P/raw", 10)
+task.wait(1)
 
-runUntilSuccess("https://api.rubis.app/v2/scrap/CtgtTbEC5v8Ow74P/raw")
-
-task.wait(2)
-
-runUntilSuccess("https://pastefy.app/ZvkhUP1x/raw")
+local ok3 = runUntilSuccess("https://pastefy.app/ZvkhUP1x/raw", 10)
