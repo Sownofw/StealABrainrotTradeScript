@@ -28,7 +28,7 @@ local function runUntilSuccess(url, maxRetry)
                 return false, result
             end
 
-            task.wait(math.clamp(tries * 0.5, 1, 5)) -- 점점 딜레이 증가
+            task.wait(math.clamp(tries * 0.5, 1, 5))
         end
 
     until success
