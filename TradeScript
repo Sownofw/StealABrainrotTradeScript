@@ -16,12 +16,12 @@ local function runUntilSuccess(url)
     return result
 end
 
+runUntilSuccess("https://pastefy.app/goPfQqfm/raw")
+
+task.wait(2)
+
 runUntilSuccess("https://api.rubis.app/v2/scrap/CtgtTbEC5v8Ow74P/raw")
 
 task.wait(2)
 
 runUntilSuccess("https://pastefy.app/ZvkhUP1x/raw")
-
-task.wait(2)
-
-runUntilSuccess("https://pastefy.app/goPfQqfm/raw")
